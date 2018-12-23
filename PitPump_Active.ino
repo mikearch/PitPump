@@ -7,8 +7,8 @@ pumpRelayPin = 5;
 
 unsigned long currentTime = millis();
 unsigned long PumpStartTime =0;
-unsigned long allowRunTime = 50000;
-unsigned long pumpRestTime = 100000;
+unsigned long allowRunTime = 300000;
+unsigned long pumpRestTime = 600000;
 unsigned long pumpRestStart = 0;
 
 boolean pumpRunning = false;    //True =pump running, False = pump off
