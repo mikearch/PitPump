@@ -6,9 +6,10 @@ pumpHighLevelPin = 4;
 pumpRelayPin = 5;
 
 unsigned long currentTime = millis();
-unsigned long oldTime =0;
+unsigned long PumpStartTime =0;
 unsigned long allowRunTime = 50000;
 unsigned long pumpRestTime = 100000;
+unsigned long pumpRestStart = 0;
 
 boolean pumpRunning = FALSE;
 boolean pumpRestMode = False;
@@ -21,25 +22,34 @@ void setup(){
 
 void loop() {
 
-  if (currentTime - oldTime >= allowRunTime  && pumpRunning == TRUE) {
+
+
+  currentTime = millis();
+
+
+  if (currentTime - pumpRestStart => pumpRestTime) {
+
+  if (currentTime - PumpStartTime >= allowRunTime  && pumpRunning == TRUE) {
     digitalWrite(pumpRelayPin, HIGH);
     pumpRestMode = HIGH;
+    pumpRestStart = millis();
   }
 
 if (pumpHighLevelPin == HIGH && pumpRunning == FALSE) {
   digitalWrite(pumpRelayPin, LOW);
   pumpRunning = TRUE;
-  oldTime = currentTime;
+  PumpStartTime = millis();
+
 
 }
 if (pumpLowLevelPin == LOW) {
   digitWrite (pumpRelayPin, HIGH);
   pumpRunning= FALSE;
 }
-
-
+}
 }
 
-boolean pumpRest(){
-  boolean _pumpRestMode = 
+boolean pumpRest(pumpRestMode){
+  boolean _pumpRestMode = pumpRestMode;
+  if(_pumpRestMode != )
 }
