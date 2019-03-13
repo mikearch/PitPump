@@ -45,7 +45,8 @@ void loop() {
       //Turns pump off if run time exceeded while pump is running
       if (currentTime - PumpStartTime >= allowRunTime  && pumpRunning == true) {
         digitalWrite(pumpRelayPin, HIGH);
-        pumpRestMode = HIGH;
+        pumpRunning = false;
+        pumpRestMode = true;
         pumpRestStart = millis();
         digitalWrite(LED_BUILTIN, LOW);  //Test
         Serial.println("Pump turned off due to exceeding time limit");   //Test
@@ -56,6 +57,7 @@ void loop() {
         digitalWrite(pumpRelayPin, LOW);
         pumpRunning = true;
         PumpStartTime = millis();
+        pumpRestMode = false;
         digitalWrite(LED_BUILTIN, HIGH);  //Test
         Serial.println("Pump turned on by high water level float");   //Test
       }
